@@ -4,7 +4,7 @@ const mongoose = require('mongoose');
 const authorSchema = new mongoose.Schema({
     name: { type: String, required: true},
     age: { type: String, required: true},
-    works: { type: String, required: false},
+    works: [{ type: String, required: false}],
     profileImage: {type:String, required: false},
   });
 

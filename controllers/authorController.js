@@ -6,6 +6,8 @@ const Author = require('../models/Author');
 //     res.send('authorIndexRouterhit')
 // });
 
+
+//INDEX
 router.get('/', (req, res) => {
     Author.find({}, (err, foundAuthors) => {
         if(err){
@@ -19,10 +21,13 @@ router.get('/', (req, res) => {
     });
 });
 
+
+//NEW
 router.get('/new', (req, res) =>{
     res.render('authorNew.ejs')
 })
-//redirect cannot reference a .ejs file
+
+//CREATE
 router.post('/', (req, res) => {
     Author.create(req.body, (err, createdAuthor) => {
         if(err){
@@ -34,27 +39,62 @@ router.post('/', (req, res) => {
       })
 })
 
+
+//EDIT
 router.get('/:id/edit', (req, res) => {
-    Author.find({_id:req.params.id}, (err, foundAuthor) => {
+    Author.findById(req.params.id, (err, foundAuthor) => { 
+      //WHY WONT _id: req.params.id WORK???? on .find
         if(err){
             res.send(err);
           } else {
             console.log(foundAuthor);
-
             res.render('authorEdit.ejs', {
-                author: foundAuthor
+                author: foundAuthor,
+                //id: req.params.id
             })
           }
     })
 })
 
 
-router.put('')
+//UPDATE
+router.put('/:id', (req, res) => {
+  Author.findByIdAndUpdate(req.params.id, req.body, {new: true},(err,updatedAuthor)=>{
+    if(err){
+      console.log(err)
+      res.send(err)
+    }else{
+      console.log(updatedAuthor)
+      res.redirect('/authors')
+    }
+  });
+});
 
+//SHOW
+router.get('/:id', (req, res) => {
+  Author.findById(req.params.id, (err, foundAuthor) => {
+      if(err){
+          res.send(err);
+        } else {
+          console.log(foundAuthor);
+          res.render('authorShow.ejs', {
+              authors: foundAuthor,
+          });
+        }
+  });
+});
 
-
-
-
+//DELETE
+router.delete('/:id', (req, res) => {
+  Author.findByIdAndDelete(req.params.id, (err, deletedAuthor) => {
+      if(err){
+        res.send(err);
+      } else {
+        console.log(deletedAuthor);
+        res.redirect('/authors');
+      }
+    })
+})
 
 
 module.exports = router;

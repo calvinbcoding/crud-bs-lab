@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=a, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Show Article Page</h1>
+    
+<p>
+My title is <%= articles.title%> and my topic is <%=articles.topic%>. <br>
+Have I been published? <%=articles.published%><br>
+</p>
+   <a href="/articles/<%=articles._id; %>/edit">Edit</a>
+
+    <form action="/articles/<%=articles._id%>?_method=DELETE" method="POST">
+        <button type="submit">Delete</button>
+    </form>
+
+</body>
+</html>

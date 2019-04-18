@@ -7,14 +7,13 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>New Author Page</h1>
-     <form action="/authors" method="POST">
-    Name: <input type="text" name="name"><br/>
-    Age: <input type="text" name="age"><br/>
-    Works: <input type="text" name="works"><br/>
-    Profile Image: <input type="text" name="profileImage"><br/>
-    <button type="submit">Create Author</button>
-  </form>
+    <h1>Show Author Page</h1>
+    
+<p>
+Hello! My name is <%= authors.name%> and I am <%=authors.age%> years old.<br>
+Here you can find some of my work: <%=authors.works%><br>
+Img: <img src='<%=authors.profileImage%>'>
+</p>
 
 </body>
 </html>
