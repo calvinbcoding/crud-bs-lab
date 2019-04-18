@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=a, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Authors index page</h1>
+        <ul>
+            <% for(let i = 0; i < authors.length; i++){ %>
+                <li>
+                    The <a href="/authors/<%=authors[i]._id%>"><%=authors[i].name; %></a> is  <%=authors[i].age; %>.
+                   
+
+                    <a href="/authors/<%=authors[i]._id; %>/edit">Edit</a>
+
+                    <form action="/authors/<%=authors[i]._id%>?_method=DELETE" method="POST">
+                      <button type="submit">Delete</button>
+                    </form>
+                </li>
+            <% } %>
+        </ul>
+        <nav>
+            <a href="/authors/new">Create a New Author</a>
+        </nav>
+
+    
+</body>
+</html>

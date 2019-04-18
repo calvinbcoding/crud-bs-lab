@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=a, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Edit Author Page</h1>
+     <form action="/authors/<%=author._id%>?_method=PUT" method="POST">
+    Name: <input type="text" name="name" value='<%=author.name%>'><br/>
+    Age: <input type="text" name="age" value='<%=author.age%>'><br/>
+    Works: <input type="text" name="works" value='<%=author.works%>'><br/>
+    Profile Image: <input type="text" name="profileImage" value='<%=author.profileImage%>'><br/>
+    <button type="submit">Edit Author</button>
+  </form>
+
+    
+</body>
+</html>
