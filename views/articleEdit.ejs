@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=a, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Edit Article Page</h1>
+     <form action="/articles/<%=article._id%>?_method=PUT" method="POST">
+    Title: <input type="text" name="title" value='<%=article.title%>'><br/>
+    Topic: <input type="text" name="topic" value='<%=article.topic%>'><br/>
+    Published: <input type="text" name="published" value='<%=article.published%>'><br/>
+    <button type="submit">Edit Article</button>
+  </form>
+
+    
+</body>
+</html>
